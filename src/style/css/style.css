@@ -1,0 +1,111 @@
+.yellowtail {
+  font-family: "Yellowtail", cursive;
+}
+
+.open-sans {
+  font-family: "Open Sans", sans-serif;
+}
+
+.alice {
+  font-family: "Alice", serif;
+}
+
+li {
+  list-style: none;
+}
+
+.relative {
+  position: relative;
+}
+
+.centralize {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.white {
+  color: white;
+}
+
+.orange {
+  color: #eead06;
+}
+
+.align-center {
+  align-self: center;
+}
+
+i {
+  font-size: 1.2em;
+}
+
+.menu-nav {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+  border-top: 1px solid #c4c4c4;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.slide-nav {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0%;
+  height: 100vh;
+  background-color: white;
+  z-index: 100;
+  transition: width 0.5s ease-in;
+  -webkit-transition: width 0.5s ease-in;
+  overflow: auto;
+}
+
+.slide-nav .active {
+  display: block;
+}
+
+.black-bg-filter {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000000ab;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.top-image-section {
+  height: 60vh;
+  background-image: url("./../../imgs/yukalog-pic1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.latest-blog-description {
+  font-size: 1.2em;
+  letter-spacing: 1px;
+  line-height: 1.5em;
+}
+
+.card-odd {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.card-even {
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.twitter-header {
+  background-color: white !important;
+}
+
+footer {
+  background-color: #575757;
+}
