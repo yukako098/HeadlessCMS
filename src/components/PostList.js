@@ -1,30 +1,72 @@
 import React from "react";
 import { Date } from "prismic-reactjs";
-// import { Link } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import PostView from "./PostView";
 
 class PostList extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
-            posts: []
+            posts: [],
+            categories: []
         };
     }
     componentDidMount() {
-        let postsURL = "http://localhost/wp-json/wp/v2/posts?_embed";
-        fetch(postsURL)
-            .then(response => response.json())
-            .then(response => {
-                this.setState({
-                    posts: response
-                });
-            });
+        // let postsURL = "http://localhost/wp-json/wp/v2/posts?_embed";
+        // fetch(postsURL)
+        //     .then(response => response.json())
+        //     .then(response => {
+        //         this.setState({
+        //             posts: response
+        //         });
+        //     });
+        // let postCategories = "http://localhost/wp-json/wp/v2/categories";
+        // fetch(postCategories)
+        //     .then(response => response.json())
+        //     .then(response => {
+        //         this.setState({
+        //             categories: response
+        //         });
+        //     });
+        const urls = [
+            "http://localhost/wp-json/wp/v2/posts?_embed",
+            "http://localhost/wp-json/wp/v2/categories"
+        ];
+        Promise.all(
+            urls.map((url, index) =>
+                fetch(url)
+                    .then(response => response.json())
+                    .then(response => {
+                        if (index === 0) {
+                            this.setState({
+                                posts: response
+                            });
+                        } else {
+                            this.setState({
+                                categories: response
+                            });
+                        }
+                    })
+                    .catch(console.log("err"))
+            )
+        );
     }
     render() {
+        let categories = this.state.categories.map(category => {
+            let categoryObj = {};
+            categoryObj = {
+                id: category.id,
+                name: category.name
+            };
+            return categoryObj;
+        });
+
         let posts = this.state.posts.map((post, index) => {
             const date = Date(post.date);
             var moment = require("moment");
             const formattedDate = moment(date).format("LL");
+            // console.log(categories);
             if (index === 0) {
                 return (
                     <div
@@ -54,11 +96,12 @@ class PostList extends React.Component {
                                 content.
                             </p>
                             <a
-                                href="#!"
+                                href={post.link}
                                 className="orange text-uppercase font-weight-bold"
                             >
                                 read more
                             </a>
+                            {/* <Route path="/art" component={PostView} /> */}
                         </div>
                     </div>
                 );
@@ -89,7 +132,7 @@ class PostList extends React.Component {
                                 content.
                             </p>
                             <a
-                                href="#!"
+                                href={post.link}
                                 className="orange text-uppercase font-weight-bold"
                             >
                                 read more

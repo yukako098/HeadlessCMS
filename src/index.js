@@ -1,33 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import "./style/css/style.css";
-import Header from "./components/Header";
-import ArticleSlider from "./components/ArticleSlider";
-import PostList from "./components/PostList";
-import SideBar from "./components/SideBar";
-import Footer from "./components/Footer";
+import App from "./components/App";
 
-const App = () => {
-    return (
-        <Router>
-            <Header />
-            <ArticleSlider />
-            <section
-                id="main-body-section"
-                className="main-body-section d-flex p-5 mt-5 mb-5"
-            >
-                <div>
-                    <PostList />
-                    {/* <Route exact path="/" component={PostList} /> */}
-                    {/* <Route path="/:slug" component={PostView} /> */}
-                </div>
-                <SideBar />
-            </section>
-            <Footer />
-        </Router>
-    );
-};
-
-// export default App;
 ReactDOM.render(<App />, document.querySelector("#root"));

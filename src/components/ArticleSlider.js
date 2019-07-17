@@ -10,7 +10,6 @@ class ArticleSlider extends React.Component {
     }
     componentDidMount() {
         let postsURL = "http://localhost/wp-json/wp/v2/posts?_embed";
-        console.log(postsURL);
 
         fetch(postsURL)
             .then(response => response.json())
@@ -24,23 +23,23 @@ class ArticleSlider extends React.Component {
         let postImage = this.state.postImages.map((postImage, index) => {
             return (
                 <li
+                    key={index}
                     data-target="#carouselExampleIndicators"
                     data-slide-to="0"
                     // className="active"
                 />
             );
         });
-        console.log(postImage);
 
         return (
             <section className="top-image-section relative">
-                <div
+                {/* <div
                     id="carouselExampleIndicators"
                     className="carousel slide"
                     data-ride="carousel"
                 >
                     <ol className="carousel-indicators">
-                        {/* <li
+                        <li
                             data-target="#carouselExampleIndicators"
                             data-slide-to="0"
                             className="active"
@@ -48,8 +47,8 @@ class ArticleSlider extends React.Component {
                         <li
                             data-target="#carouselExampleIndicators"
                             data-slide-to="1"
-                        /> */}
-                        {postImage}
+                        />
+
                     </ol>
                     <div className="carousel-inner" role="listbox">
                         <div className="carousel-item active">
@@ -93,7 +92,7 @@ class ArticleSlider extends React.Component {
                         />
                         <span className="sr-only">Next</span>
                     </a>
-                </div>
+                </div> */}
             </section>
         );
     }
